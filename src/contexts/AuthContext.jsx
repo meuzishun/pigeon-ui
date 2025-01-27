@@ -11,7 +11,7 @@ import {
   postRegisterData,
   postLoginData,
   getProfileWithToken,
-} from '../services/api.js';
+} from '../services/authAPI.js';
 
 const INITIALIZE = 'INITIALIZE';
 const REGISTER = 'REGISTER';

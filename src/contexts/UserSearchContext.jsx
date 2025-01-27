@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { createContext, useReducer } from 'react';
 import { getToken } from '../services/localStorage.js';
-import { searchUsersWithTokenAndStr } from '../services/api.js';
+import { searchUsersWithTokenAndStr } from '../services/authAPI.js';
 
 const LOAD = 'LOAD';
 const INITIALIZE = 'INITIALIZE';

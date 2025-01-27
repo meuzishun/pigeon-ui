@@ -5,7 +5,7 @@ import { getToken } from '../services/localStorage.js';
 import {
   getProfileWithToken,
   editProfileWithTokenAndData,
-} from '../services/api.js';
+} from '../services/authAPI.js';
 
 const LOAD = 'LOAD';
 const INITIALIZE = 'INITIALIZE';
