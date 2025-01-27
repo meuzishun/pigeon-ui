@@ -1,0 +1,12 @@
+.add-participant {
+  position: relative;
+  margin: auto auto;
+
+  .add-icon {
+    justify-self: flex-end;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

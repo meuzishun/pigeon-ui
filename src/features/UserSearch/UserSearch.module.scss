@@ -1,0 +1,18 @@
+@use '../../styles/layouts';
+
+.user-search {
+  @include layouts.fixed-header-scrollable-column;
+  grid-template-columns: minmax(auto, 400px);
+
+  input {
+    font-size: 1.2rem;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 100px;
+    border: 1px solid grey;
+
+    &:focus {
+      outline-color: var(--soft-blue);
+    }
+  }
+}
