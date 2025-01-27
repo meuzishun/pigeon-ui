@@ -1,0 +1,30 @@
+@use '../styles/layouts';
+@use '../styles/animations';
+
+.root-layout {
+  @include layouts.fixed-outer-scrollable-center;
+  height: 100vh;
+  overflow-x: hidden;
+
+  .main {
+    background-color: var(--soft-blue-trans);
+  }
+
+  .fade-enter {
+    opacity: 0;
+  }
+
+  .fade-enter-active {
+    opacity: 1;
+    @include animations.fade-in;
+  }
+
+  .fade-exit {
+    opacity: 1;
+  }
+
+  .fade-exit-active {
+    opacity: 0;
+    @include animations.fade-out;
+  }
+}
