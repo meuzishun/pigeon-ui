@@ -1,0 +1,17 @@
+:root {
+  --soft-blue: dodgerblue;
+  --soft-blue-trans: rgba(30, 143, 255, 0.05);
+  --soft-blue-shadow: rgba(30, 143, 255, 0.2);
+  --almost-black: rgb(39, 39, 39);
+  --good-green: rgb(73, 175, 73);
+  --light-grey: rgb(200, 200, 200);
+  --white: #fff;
+  --warning: #ff3d3d;
+}
+
+* {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
