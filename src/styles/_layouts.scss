@@ -1,0 +1,26 @@
+@mixin fixed-outer-scrollable-center {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+
+  & > :nth-child(2) {
+    overflow-y: auto;
+  }
+}
+
+@mixin fixed-header-scrollable-column {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content 1fr;
+  justify-content: center;
+  align-content: start;
+
+  & > :nth-child(2) {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    overflow-y: auto;
+  }
+}
