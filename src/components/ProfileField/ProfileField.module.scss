@@ -1,0 +1,43 @@
+.profile-field {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    'label label'
+    'content btn';
+  align-items: center;
+
+  label {
+    grid-area: label;
+    text-transform: capitalize;
+    font-size: 0.8rem;
+    color: var(--light-grey);
+    margin-left: 10px;
+  }
+
+  input,
+  p {
+    grid-area: content;
+    font-size: 1.25rem;
+    padding: 10px 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: transparent;
+    border-radius: 10px;
+    color: var(--almost-black);
+  }
+
+  input {
+    border-color: grey;
+    outline-color: var(--soft-blue);
+  }
+
+  button {
+    grid-area: btn;
+    display: grid;
+    place-content: center center;
+    font-size: 1.2rem;
+    background-color: #fff;
+    padding: 5px;
+    color: var(--almost-black);
+  }
+}

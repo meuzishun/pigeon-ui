@@ -1,0 +1,24 @@
+button {
+  align-self: center;
+  text-transform: capitalize;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.btn {
+  color: white;
+  background-color: var(--soft-blue);
+
+  &-submit {
+    background-color: var(--good-green);
+  }
+  &-warning {
+    background-color: red;
+  }
+}

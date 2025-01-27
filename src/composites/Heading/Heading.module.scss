@@ -1,0 +1,21 @@
+.heading {
+  a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    &:visited {
+      color: #000;
+    }
+
+    h1 {
+      font-weight: normal;
+    }
+  }
+
+  img {
+    width: 60px;
+    height: auto;
+  }
+}

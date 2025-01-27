@@ -1,0 +1,30 @@
+@use '../../styles/animations';
+
+.loading-container {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  * {
+    font-size: 1rem;
+  }
+
+  .loading-icon {
+    display: flex;
+    justify-content: center;
+
+    svg {
+      font-size: 2rem;
+      @include animations.spin;
+      color: var(--light-grey);
+    }
+  }
+
+  .loading-msg {
+    text-align: center;
+    color: var(--soft-blue);
+    font-style: italic;
+    text-transform: capitalize;
+  }
+}

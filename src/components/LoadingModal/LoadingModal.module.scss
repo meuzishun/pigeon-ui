@@ -1,0 +1,36 @@
+@use '../../styles/animations';
+
+.loading-modal {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.665);
+  z-index: 5;
+  @include animations.fade-in;
+
+  .loading-container {
+    margin-top: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    * {
+      font-size: 2rem;
+    }
+
+    .loading-icon svg {
+      font-size: 5rem;
+      @include animations.spin;
+      color: var(--light-grey);
+    }
+
+    .loading-msg {
+      text-align: center;
+      color: var(--soft-blue);
+      font-style: italic;
+      @include animations.pulse;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.form-input {
+  display: flex;
+  flex-direction: column;
+  border: none;
+
+  label {
+    text-transform: capitalize;
+    font-size: 0.85rem;
+  }
+
+  input {
+    font-size: 1.25rem;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid grey;
+
+    &:focus {
+      outline-color: var(--soft-blue);
+    }
+  }
+}

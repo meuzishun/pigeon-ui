@@ -1,0 +1,25 @@
+@use '../../styles/animations';
+
+.conversations-list {
+  height: 100%;
+  padding: 20px;
+  gap: 10px;
+}
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  @include animations.fade-in;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  @include animations.fade-out;
+}

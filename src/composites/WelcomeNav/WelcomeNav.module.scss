@@ -1,0 +1,17 @@
+.nav {
+  display: grid;
+  grid-template: 1fr / repeat(2, auto);
+  justify-content: center;
+  padding: 20px;
+  padding-top: 3vh;
+  gap: 20px;
+
+  a {
+    text-decoration: none;
+    background-color: var(--soft-blue);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 1.5rem;
+  }
+}

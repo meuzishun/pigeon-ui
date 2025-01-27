@@ -1,0 +1,27 @@
+.new-msg-input {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  padding: 10px 20px;
+  border-top: 2px solid var(--light-grey);
+
+  input {
+    font-size: 1rem;
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: 1px solid var(--light-grey);
+
+    &:focus {
+      outline: 1px solid var(--soft-blue);
+    }
+  }
+
+  button {
+    padding: 0;
+    display: grid;
+    place-content: center center;
+    background-color: transparent;
+    color: var(--soft-blue);
+    font-size: 1.5rem;
+  }
+}

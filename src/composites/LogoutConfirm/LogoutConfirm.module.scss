@@ -1,0 +1,14 @@
+.logout-confirm {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+
+  * {
+    margin: 30px;
+  }
+
+  p {
+    font-size: 2rem;
+    text-align: center;
+  }
+}

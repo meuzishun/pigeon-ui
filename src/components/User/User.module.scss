@@ -1,0 +1,29 @@
+.user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--white);
+  padding: 10px 15px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px var(--soft-blue-shadow);
+
+  .user-name {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1.25rem;
+
+    .email {
+      display: block;
+      font-size: 0.9rem;
+    }
+  }
+
+  button {
+    font-size: 1.5rem;
+    padding: 5px 15px;
+    padding: 0;
+    color: var(--good-green);
+    background-color: transparent;
+  }
+}
