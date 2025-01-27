@@ -1,0 +1,8 @@
+.header {
+  display: grid;
+  grid-template: 1fr / auto auto;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 15px;
+  box-shadow: 0 2px 15px 5px var(--soft-blue-shadow);
+}

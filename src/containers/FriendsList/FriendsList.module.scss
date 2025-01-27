@@ -1,0 +1,29 @@
+@use '../../styles/animations';
+
+.friends-list {
+  padding: 20px;
+  gap: 20px;
+  border-top: 2px solid var(--light-grey);
+
+  .no-friends {
+    justify-self: center;
+  }
+}
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  @include animations.fade-in;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  @include animations.fade-out;
+}
