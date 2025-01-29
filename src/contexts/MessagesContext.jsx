@@ -4,7 +4,7 @@ import { getToken } from '../services/localStorage';
 import {
   getMessagesWithToken,
   postMessageWithTokenAndData,
-} from '../services/authAPI';
+} from '../services/api';
 
 const MessagesContext = createContext(null);
 

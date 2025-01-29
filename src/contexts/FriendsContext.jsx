@@ -5,7 +5,7 @@ import {
   getFriendsWithToken,
   addFriendWithTokenAndId,
   deleteFriendWithTokenAndId,
-} from '../services/authAPI.js';
+} from '../services/api.js';
 
 const LOAD = 'LOAD';
 const INITIALIZE = 'INITIALIZE';
