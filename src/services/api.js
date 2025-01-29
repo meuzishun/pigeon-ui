@@ -131,6 +131,18 @@ const addFriendWithTokenAndId = async (token, id) => {
   return response;
 };
 
+const getRoomsWithToken = async (token) => {
+  const response = await fetch(`${baseUrl}/rooms`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return response;
+};
+
 export {
   postLoginData,
   postRegisterData,
@@ -142,4 +154,5 @@ export {
   deleteFriendWithTokenAndId,
   searchUsersWithTokenAndStr,
   addFriendWithTokenAndId,
+  getRoomsWithToken,
 };
