@@ -1,0 +1,14 @@
+.room-preview {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px var(--soft-blue-shadow);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    'authors timestamp'
+    'message message';
+  color: var(--almost-black);
+  background-color: var(--white);
+  transition: color 150ms ease-in;
+  transition: background-color 150ms ease-in-out;
+}
