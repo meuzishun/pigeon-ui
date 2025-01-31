@@ -5,6 +5,7 @@ import {
   getMessagesWithToken,
   postMessageWithTokenAndData,
 } from '../services/api';
+import { nestMessages } from '../lib/nestMessages';
 
 const MessagesContext = createContext(null);
 
@@ -15,7 +16,7 @@ function MessagesProvider({ children }) {
   const initialMessagesState = {
     isInitialized: false,
     isLoading: false,
-    messages: null,
+    conversations: null,
   };
 
   const messagesReducer = (state, action) => {
@@ -31,7 +32,7 @@ function MessagesProvider({ children }) {
           ...state,
           isInitialized: true,
           isLoading: false,
-          messages: action.payload.messages,
+          conversations: action.payload.conversations,
         };
     }
   };
@@ -49,10 +50,12 @@ function MessagesProvider({ children }) {
     const response = await getMessagesWithToken(token);
     const data = await response.json();
 
+    const conversations = nestMessages(data.messages);
+
     dispatch({
       type: INITIALIZE,
       payload: {
-        messages: data.messages,
+        conversations: conversations,
       },
     });
   };
@@ -65,10 +68,12 @@ function MessagesProvider({ children }) {
     const getData = await getResponse.json();
     const { messages } = getData;
 
+    const conversations = nestMessages(messages);
+
     dispatch({
       type: INITIALIZE,
       payload: {
-        messages: messages,
+        conversations: conversations,
       },
     });
 
