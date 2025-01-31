@@ -4,16 +4,21 @@ import FadeTransition from '../../components/FadeTransition/FadeTransition';
 import LoadingMsg from '../../components/LoadingMsg/LoadingMsg';
 import ConversationPreview from '../ConversationPreview/ConversationPreview';
 import styles from './ConversationsList.module.scss';
+import { nestMessages } from '../../lib/nestMessages';
 
 function ConversationsList() {
   const loadingRef = useRef(null);
   const conversationsRef = useRef(null);
-  const { conversations, isLoading } = useMessages();
+  const { messages, isLoading } = useMessages();
   const nodeRef = isLoading ? loadingRef : conversationsRef;
 
-  const sortingFn = (a, b) => {
-    return new Date(b.at(-1).timestamp) - new Date(a.at(-1).timestamp);
-  };
+  let conversations = [];
+
+  if (messages) {
+    conversations = nestMessages(messages);
+  }
+
+  console.log(conversations);
 
   return (
     <FadeTransition parentKey={isLoading} nodeRef={nodeRef} styles={styles}>
@@ -28,14 +33,12 @@ function ConversationsList() {
               <p className={styles['msg']}>No messages</p>
             </div>
           ) : (
-            conversations
-              ?.sort(sortingFn)
-              .map((conversation) => (
-                <ConversationPreview
-                  key={conversation[0]._id}
-                  conversation={conversation}
-                />
-              ))
+            conversations?.map((conversation) => (
+              <ConversationPreview
+                key={conversation[0]._id}
+                conversation={conversation}
+              />
+            ))
           )}
         </div>
       )}
