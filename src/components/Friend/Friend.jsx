@@ -1,13 +1,15 @@
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import useFriends from '../../hooks/useFriends';
-import useMessages from '../../hooks/useMessages';
+import useNewMessage from '../../hooks/useNewMessage';
+import useDashboard from '../../hooks/useDashboard';
 import { BsChatText, BsFillPersonXFill } from 'react-icons/bs';
 import styles from './Friend.module.scss';
 
 function Friend({ friend }) {
   const { removeFriend } = useFriends();
-  const { createNewMsg, addNewMsgParticipant } = useMessages();
+  const { setSelectedId, displayConversation } = useDashboard();
+  const { createNewMsg, addNewMsgParticipant } = useNewMessage();
   const navigate = useNavigate();
 
   const handleRemoveBtnClick = () => {
@@ -15,8 +17,11 @@ function Friend({ friend }) {
   };
 
   const handleMessageBtnClick = () => {
+    console.log('Msg a friend');
+    setSelectedId(null);
     createNewMsg();
     addNewMsgParticipant(friend);
+    displayConversation();
     navigate('/messages');
   };
 

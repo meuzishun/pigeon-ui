@@ -5,7 +5,7 @@ const DashboardContext = createContext(null);
 
 function DashboardProvider({ children }) {
   const DISPLAY_PREVIEWS = 'DISPLAY_PREVIEWS';
-  const SELECT_CONVERSATION = 'SELECT_CONVERSATION';
+  const DISPLAY_CONVERSATION = 'DISPLAY_CONVERSATION';
   const SELECT_CONVERSATION_PARENT_ID = 'SELECT_CONVERSATION_PARENT_ID';
   const ANIMATION_END = 'ANIMATION_END';
 
@@ -25,11 +25,10 @@ function DashboardProvider({ children }) {
           viewConversation: false,
         };
 
-      case SELECT_CONVERSATION:
+      case DISPLAY_CONVERSATION:
         return {
           ...state,
           viewConversation: true,
-          selectedConversation: action.payload.conversation,
           isAnimating: true,
         };
 
@@ -56,12 +55,9 @@ function DashboardProvider({ children }) {
     initialDashboardState
   );
 
-  const displayConversation = (conversation) => {
+  const displayConversation = () => {
     dispatch({
-      type: SELECT_CONVERSATION,
-      payload: {
-        conversation,
-      },
+      type: DISPLAY_CONVERSATION,
     });
   };
 
