@@ -15,7 +15,7 @@ function MessagesProvider({ children }) {
   const initialMessagesState = {
     isInitialized: false,
     isLoading: false,
-    conversations: null,
+    messages: null,
   };
 
   const messagesReducer = (state, action) => {
@@ -31,7 +31,7 @@ function MessagesProvider({ children }) {
           ...state,
           isInitialized: true,
           isLoading: false,
-          conversations: action.payload.conversations,
+          messages: action.payload.messages,
         };
     }
   };
@@ -52,7 +52,7 @@ function MessagesProvider({ children }) {
     dispatch({
       type: INITIALIZE,
       payload: {
-        conversations: data.messages,
+        messages: data.messages,
       },
     });
   };
@@ -68,7 +68,7 @@ function MessagesProvider({ children }) {
     dispatch({
       type: INITIALIZE,
       payload: {
-        conversations: messages,
+        messages: messages,
       },
     });
 
