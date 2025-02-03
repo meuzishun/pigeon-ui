@@ -1,8 +1,8 @@
 import { createDataContext } from './createDataContext';
-import { URL } from '../constants/url';
+import { API_URL } from '../constants/url';
 import { requestOptions } from '../constants/requestOptions';
 
 const { DataContext: PostsContext, DataProvider: PostsProvider } =
-  createDataContext(`${URL}/posts`, requestOptions);
+  createDataContext(`${API_URL}/posts`, requestOptions);
 
 export { PostsProvider, PostsContext };
