@@ -1,11 +1,7 @@
-// Adaptable
-// const baseUrl = 'https://pigeon.adaptable.app/api';
-
-// For development
-const baseUrl = 'http://localhost:3000/api';
+import { API_URL } from '../constants/url';
 
 const postLoginData = async (formData) => {
-  const response = await fetch(`${baseUrl}/auth/login`, {
+  const response = await fetch(`${API_URL}/auth/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -17,7 +13,7 @@ const postLoginData = async (formData) => {
 };
 
 const postRegisterData = async (formData) => {
-  const response = await fetch(`${baseUrl}/auth/register`, {
+  const response = await fetch(`${API_URL}/auth/register`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -30,7 +26,7 @@ const postRegisterData = async (formData) => {
 
 const getProfileWithToken = async (token) => {
   try {
-    const response = await fetch(`${baseUrl}/profile`, {
+    const response = await fetch(`${API_URL}/profile`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -45,7 +41,7 @@ const getProfileWithToken = async (token) => {
 };
 
 const getMessagesWithToken = async (token) => {
-  const response = await fetch(`${baseUrl}/messages`, {
+  const response = await fetch(`${API_URL}/messages`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -57,7 +53,7 @@ const getMessagesWithToken = async (token) => {
 };
 
 const getFriendsWithToken = async (token) => {
-  const response = await fetch(`${baseUrl}/contacts`, {
+  const response = await fetch(`${API_URL}/contacts`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -69,7 +65,7 @@ const getFriendsWithToken = async (token) => {
 };
 
 const postMessageWithTokenAndData = async (token, formData) => {
-  const response = await fetch(`${baseUrl}/messages`, {
+  const response = await fetch(`${API_URL}/messages`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -82,7 +78,7 @@ const postMessageWithTokenAndData = async (token, formData) => {
 };
 
 const editProfileWithTokenAndData = async (token, formData) => {
-  const response = await fetch(`${baseUrl}/profile`, {
+  const response = await fetch(`${API_URL}/profile`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -95,7 +91,7 @@ const editProfileWithTokenAndData = async (token, formData) => {
 };
 
 const deleteFriendWithTokenAndId = async (token, id) => {
-  const response = await fetch(`${baseUrl}/contacts/${id}`, {
+  const response = await fetch(`${API_URL}/contacts/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -107,7 +103,7 @@ const deleteFriendWithTokenAndId = async (token, id) => {
 };
 
 const searchUsersWithTokenAndStr = async (token, str) => {
-  const response = await fetch(`${baseUrl}/users/search?query=${str}`, {
+  const response = await fetch(`${API_URL}/users/search?query=${str}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -119,7 +115,7 @@ const searchUsersWithTokenAndStr = async (token, str) => {
 };
 
 const addFriendWithTokenAndId = async (token, id) => {
-  const response = await fetch(`${baseUrl}/contacts`, {
+  const response = await fetch(`${API_URL}/contacts`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -132,7 +128,7 @@ const addFriendWithTokenAndId = async (token, id) => {
 };
 
 const getRoomsWithToken = async (token) => {
-  const response = await fetch(`${baseUrl}/rooms`, {
+  const response = await fetch(`${API_URL}/rooms`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
