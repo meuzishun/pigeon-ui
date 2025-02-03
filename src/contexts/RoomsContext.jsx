@@ -1,12 +1,3 @@
-// import { createDataContext } from '../shared/contexts/createDataContext';
-// import { URL } from '../constants/url';
-// import { requestOptions } from '../constants/requestOptions';
-
-// const { DataContext: RoomsContext, DataProvider: RoomsProvider } =
-//   createDataContext(`${URL}/rooms`, requestOptions);
-
-// export { RoomsProvider, RoomsContext };
-
 import PropTypes from 'prop-types';
 import { createContext, useEffect, useReducer } from 'react';
 import { getToken } from '../services/localStorage';
