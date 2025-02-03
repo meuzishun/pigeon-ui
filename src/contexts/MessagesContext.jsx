@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import { createContext, useEffect, useReducer } from 'react';
+import { SOCKET_URL } from '../constants/url';
+import { io } from 'socket.io-client';
 import { getToken } from '../services/localStorage';
 import {
   getMessagesWithToken,
@@ -7,15 +9,19 @@ import {
 } from '../services/api';
 import { nestMessages } from '../lib/nestMessages';
 
+const socket = io(SOCKET_URL);
+
 const MessagesContext = createContext(null);
 
 function MessagesProvider({ children }) {
   const LOAD = 'LOAD';
   const INITIALIZE = 'INITIALIZE';
+  const ADD_MESSAGE = 'ADD_MESSAGE';
 
   const initialMessagesState = {
     isInitialized: false,
     isLoading: false,
+    messages: null,
     conversations: null,
   };
 
@@ -32,8 +38,19 @@ function MessagesProvider({ children }) {
           ...state,
           isInitialized: true,
           isLoading: false,
-          conversations: action.payload.conversations,
+          messages: action.payload.messages,
+          conversations: nestMessages(action.payload.messages),
         };
+
+      case ADD_MESSAGE:
+        return {
+          ...state,
+          messages: [...state.messages, action.payload],
+          conversations: nestMessages([...state.messages, action.payload]),
+        };
+
+      default:
+        return state;
     }
   };
 
@@ -43,45 +60,63 @@ function MessagesProvider({ children }) {
   );
 
   const getMessages = async () => {
-    dispatch({
-      type: LOAD,
-    });
-    const token = getToken();
-    const response = await getMessagesWithToken(token);
-    const data = await response.json();
+    dispatch({ type: LOAD });
 
-    const conversations = nestMessages(data.messages);
+    try {
+      const token = getToken();
+      const response = await getMessagesWithToken(token);
+      const data = await response.json();
 
-    dispatch({
-      type: INITIALIZE,
-      payload: {
-        conversations: conversations,
-      },
-    });
+      dispatch({
+        type: INITIALIZE,
+        payload: {
+          messages: data.messages,
+        },
+      });
+    } catch (error) {
+      console.error('Error fetching messages:', error);
+    }
   };
 
   const sendNewMsg = async (message) => {
-    const token = getToken();
-    const postResponse = await postMessageWithTokenAndData(token, message);
-    const postData = await postResponse.json();
-    const getResponse = await getMessagesWithToken(token);
-    const getData = await getResponse.json();
-    const { messages } = getData;
+    try {
+      const token = getToken();
+      const postResponse = await postMessageWithTokenAndData(token, message);
+      const postData = await postResponse.json();
 
-    const conversations = nestMessages(messages);
+      socket.emit('sendMessage', postData.message);
 
-    dispatch({
-      type: INITIALIZE,
-      payload: {
-        conversations: conversations,
-      },
-    });
+      dispatch({
+        type: ADD_MESSAGE,
+        payload: postData.message,
+      });
 
-    return postData;
+      return postData;
+    } catch (error) {
+      console.error('Error sending message:', error);
+    }
   };
 
   useEffect(() => {
     getMessages();
+
+    socket.on('newMessage', (newMessage) => {
+      //! Still receiving all messages regardless of author and participants
+      // console.log(newMessage);
+      dispatch({
+        type: ADD_MESSAGE,
+        payload: newMessage,
+      });
+    });
+
+    socket.on('connect', () => {
+      getMessages();
+    });
+
+    return () => {
+      socket.off('newMessage');
+      socket.off('connect');
+    };
   }, []);
 
   return (
