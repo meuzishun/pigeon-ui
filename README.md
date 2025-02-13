@@ -81,7 +81,7 @@ Make sure to create a `.env` file in the backend project with the following vari
 
 ```
 PORT=3000
-MONGODB_URI=your_mongodb_connection_string
+MONGODB_URL=your_mongodb_connection_string
 ```
 
 ## Contributing
